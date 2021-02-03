@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t srah400/docker-react-1 -f Dockerfile.dev . 
+
+script:
+  - docker run -e CI=true srah400/docker-react-1 npm run test -- --coverage
